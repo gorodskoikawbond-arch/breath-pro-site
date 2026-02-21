@@ -201,8 +201,8 @@ body {
 .steps-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(180deg,
-        rgba(10,6,2,0.82) 0%,
-        rgba(10,6,2,0.78) 100%);
+        rgba(10,6,2,0.45) 0%,
+        rgba(10,6,2,0.40) 100%);
 }
 .steps .container {
     position: relative; z-index: 2;
