@@ -497,3 +497,95 @@ body {
         background: #ffffff !important;
     }
 }
+
+/* ===== МОБИЛЬНЫЙ ФИНАЛЬНЫЙ ФИШ ===== */
+@media (max-width: 768px) {
+
+    /* HERO — картинка на весь экран */
+    .hero {
+        min-height: 100svh;
+    }
+    .hero-img {
+        width: 100%;
+        height: 100svh;
+        object-fit: cover;
+        object-position: center top;
+    }
+    .hero-overlay {
+        background: linear-gradient(180deg,
+            rgba(10,6,2,0.25) 0%,
+            rgba(10,6,2,0.70) 60%,
+            rgba(10,6,2,0.85) 100%);
+    }
+    .hero-bottom-fade {
+        display: none;
+    }
+    .hero-inner {
+        grid-template-columns: 1fr !important;
+        padding: 100px 20px 60px !important;
+        align-items: flex-end;
+        min-height: 100svh;
+    }
+    .hero-tag {
+        color: rgba(255,255,255,0.85) !important;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 100px;
+        padding: 6px 14px;
+        display: inline-block;
+    }
+    .hero-title {
+        color: #ffffff !important;
+        font-size: clamp(2rem, 8vw, 2.8rem) !important;
+    }
+    .hero-desc {
+        color: rgba(255,255,255,0.85) !important;
+    }
+    .hero-free {
+        color: rgba(255,255,255,0.6) !important;
+    }
+    .hero-card { display: none !important; }
+
+    /* STEPS — светлый бежевый фон */
+    .steps-bg { display: none !important; }
+    .steps-overlay { display: none !important; }
+    .steps {
+        background: #FDF6EC !important;
+    }
+    .steps .section-title {
+        color: #1a1008 !important;
+    }
+    .steps .section-sub {
+        color: #6b5a45 !important;
+    }
+    .level-card {
+        background: rgba(255,255,255,0.8) !important;
+        border: 1px solid rgba(200,160,100,0.3) !important;
+    }
+    .level-card.master-card {
+        background: rgba(240,192,64,0.12) !important;
+    }
+    .level-name {
+        color: #3d2b10 !important;
+    }
+    .level-step {
+        background: rgba(0,0,0,0.05) !important;
+    }
+    .ls-num {
+        color: rgba(0,0,0,0.35) !important;
+    }
+    .ls-cycle {
+        color: #1a1008 !important;
+    }
+    .level-header {
+        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+    }
+
+    /* СКРИНШОТЫ — чистый белый */
+    .screenshots {
+        background: #ffffff !important;
+    }
+    .screens-grid {
+        background: transparent !important;
+    }
+}
