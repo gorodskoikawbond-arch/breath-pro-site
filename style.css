@@ -589,3 +589,48 @@ body {
         background: transparent !important;
     }
 }
+
+/* ===== ФИНАЛЬНЫЕ ПРАВКИ ===== */
+@media (max-width: 768px) {
+
+    /* Шапка — логотип оранжевый, меньше */
+    .logo-name {
+        color: var(--orange) !important;
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+    }
+    .logo-icon {
+        color: var(--orange) !important;
+    }
+
+    /* Скриншоты — белый фон, убрать тёмное */
+    .screenshots {
+        background: #ffffff !important;
+    }
+    .screens-grid {
+        background: transparent !important;
+    }
+    .screen-item img {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Final блок — картинка большая, overlay светлее */
+    .final-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        min-height: 500px !important;
+    }
+    .final-bg {
+        position: absolute !important;
+        inset: 0 !important;
+    }
+    .final-overlay {
+        background: rgba(10,5,0,0.55) !important;
+    }
+    .final .container {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
+}
