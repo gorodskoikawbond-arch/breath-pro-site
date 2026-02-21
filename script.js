@@ -1,20 +1,4 @@
-// Частицы фона
-function createParticles() {
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 25; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.animationDuration = (8 + Math.random() * 12) + 's';
-        p.style.animationDelay = (Math.random() * 10) + 's';
-        p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
-        p.style.opacity = (0.2 + Math.random() * 0.4).toString();
-        container.appendChild(p);
-    }
-}
-createParticles();
-
-// FAQ
+// FAQ аккордеон
 function toggleFaq(button) {
     const answer = button.nextElementSibling;
     const isOpen = answer.classList.contains('open');
@@ -26,7 +10,7 @@ function toggleFaq(button) {
     }
 }
 
-// Анимация появления
+// Анимация появления элементов
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -37,24 +21,24 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll(
-    '.legend-card, .step-card, .progress-table, .feature-row, .price-card, .how-step, .faq-item'
+    '.belief-card, .steps-card, .feature-card, .pricing-card, .howto-step, .faq-item'
 ).forEach(el => {
     el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
     observer.observe(el);
 });
 
-// Дыхательная анимация ритма
-const numbers = document.querySelectorAll('.rhythm-number');
+// Анимация дыхательного цикла
+const breathNums = document.querySelectorAll('.breath-num');
+const durations = [2000, 8000, 4000];
 let phase = 0;
-const phases = ['вдох', 'задержка', 'выдох'];
-const durations = [2000, 4000, 2000];
 
 function animateBreath() {
-    numbers.forEach((n, i) => {
-        n.style.transform = i === phase ? 'scale(1.3)' : 'scale(1)';
-        n.style.transition = 'transform 0.5s ease';
+    breathNums.forEach((n, i) => {
+        n.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+        n.style.transform = i === phase ? 'scale(1.25)' : 'scale(1)';
+        n.style.opacity = i === phase ? '1' : '0.5';
     });
     setTimeout(() => {
         phase = (phase + 1) % 3;
