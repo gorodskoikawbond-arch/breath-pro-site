@@ -1,208 +1,423 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breath Pro — Разблокировать PRO версию</title>
-    <meta name="description" content="Получите полный доступ к Breath Pro — приложению для дыхательных практик">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Шапка -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <span class="logo-icon">🌬️</span>
-                <span class="logo-text">Breath <span class="logo-pro">Pro</span></span>
-            </div>
-        </div>
-    </header>
+:root {
+    --teal: #4FC3C3;
+    --teal-dark: #2A8A8A;
+    --orange: #F4A340;
+    --orange-dark: #C47820;
+    --gold: #FFD700;
+    --bg: #0A1628;
+    --bg2: #0D1F35;
+    --bg3: #112240;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(79,195,195,0.15);
+    --text: #E8F4F4;
+    --muted: #7A9EB5;
+    --radius: 16px;
+}
 
-    <!-- Герой секция -->
-    <section class="hero">
-        <div class="container">
-            <div class="badge">✨ Полный доступ навсегда</div>
-            <h1 class="hero-title">
-                Раскройте весь потенциал<br>
-                <span class="gradient-text">дыхательных практик</span>
-            </h1>
-            <p class="hero-subtitle">
-                Одноразовый платёж — доступ навсегда.<br>
-                Никаких подписок и скрытых платежей.
-            </p>
+html { scroll-behavior: smooth; }
 
-            <!-- Карточка цены -->
-            <div class="price-card">
-                <div class="price-card__top">
-                    <div class="price-label">PRO версия</div>
-                    <div class="price-amount">
-                        <span class="price-old">599₽</span>
-                        <span class="price-current">299₽</span>
-                    </div>
-                    <div class="price-desc">единоразово · навсегда</div>
-                </div>
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-                <div class="price-card__features">
-                    <div class="feature-item">
-                        <span class="feature-icon">🎯</span>
-                        <div class="feature-text">
-                            <strong>Все дыхательные техники</strong>
-                            <span>Коробочное дыхание, 4-7-8, Вим Хоф, Туммо и другие</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📊</span>
-                        <div class="feature-text">
-                            <strong>Расширенная статистика</strong>
-                            <span>Графики прогресса, история сессий, рекорды</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🎵</span>
-                        <div class="feature-text">
-                            <strong>Атмосферные звуки</strong>
-                            <span>Природа, медитативная музыка, белый шум</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">⚙️</span>
-                        <div class="feature-text">
-                            <strong>Настройка под себя</strong>
-                            <span>Создавайте собственные программы дыхания</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🌙</span>
-                        <div class="feature-text">
-                            <strong>Ночные практики</strong>
-                            <span>Специальные техники для глубокого сна</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🚫</span>
-                        <div class="feature-text">
-                            <strong>Без рекламы</strong>
-                            <span>Полное погружение без отвлечений</span>
-                        </div>
-                    </div>
-                </div>
+.container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
 
-                <!-- Кнопка покупки -->
-                <a href="https://t.me/ProAktivator_bot" 
-                   class="buy-button" 
-                   id="buyBtn"
-                   target="_blank">
-                    <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/>
-                    </svg>
-                    Купить за 299₽ через Telegram
-                </a>
+/* PARTICLES */
+.particles {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--teal);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up linear infinite;
+}
+@keyframes float-up {
+    0% { opacity: 0; transform: translateY(0) scale(1); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.2; }
+    100% { opacity: 0; transform: translateY(-100vh) scale(0.5); }
+}
 
-                <p class="buy-hint">
-                    🔐 Вы получите уникальный ключ активации<br>
-                    который нужно ввести в приложении
-                </p>
-            </div>
-        </div>
-    </section>
+/* HEADER */
+.header {
+    position: sticky; top: 0; z-index: 100;
+    padding: 16px 0;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 600; }
+.logo-emblem { font-size: 1.5rem; color: var(--teal); animation: spin-slow 10s linear infinite; display: inline-block; }
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.logo-pro { color: var(--orange); }
 
-    <!-- Как это работает -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Как получить PRO?</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">💳</div>
-                    <h3>Оплатите</h3>
-                    <p>Нажмите кнопку выше и перейдите в Telegram бот. Следуйте инструкциям для оплаты.</p>
-                </div>
-                <div class="step-arrow">→</div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">🔑</div>
-                    <h3>Получите ключ</h3>
-                    <p>После оплаты бот автоматически отправит вам уникальный ключ активации.</p>
-                </div>
-                <div class="step-arrow">→</div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">🚀</div>
-                    <h3>Активируйте</h3>
-                    <p>Введите ключ в приложении Breath Pro и наслаждайтесь полным доступом навсегда!</p>
-                </div>
-            </div>
-        </div>
-    </section>
+/* HERO */
+.hero {
+    position: relative; min-height: 500px;
+    display: flex; align-items: center;
+    overflow: hidden; padding: 60px 0 40px;
+}
 
-    <!-- FAQ -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Частые вопросы</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Как долго действует PRO версия?
-                        <span class="faq-arrow">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        Навсегда! Вы платите один раз и получаете полный доступ без ограничений по времени.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Безопасна ли оплата?
-                        <span class="faq-arrow">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        Да, оплата проходит через официальные платёжные системы в Telegram. Ваши данные карты защищены.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Где ввести ключ в приложении?
-                        <span class="faq-arrow">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        Откройте приложение Breath Pro → нажмите "Получить PRO" → выберите "У меня есть ключ" → введите ключ формата BREATH-PRO-XXXX-XXXX.
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Что если ключ не работает?
-                        <span class="faq-arrow">▼</span>
-                    </button>
-                    <div class="faq-answer">
-                        Напишите нам прямо в Telegram бот — мы решим проблему в течение нескольких часов.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Горы */
+.mountain-bg {
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 100%; pointer-events: none;
+}
+.sun {
+    position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, #F4A340 0%, #E8691A 50%, transparent 70%);
+    border-radius: 50%;
+    bottom: 120px; left: 50%; transform: translateX(-50%);
+    opacity: 0.4;
+    animation: pulse-sun 4s ease-in-out infinite;
+}
+@keyframes pulse-sun {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.4; }
+    50% { transform: translateX(-50%) scale(1.08); opacity: 0.55; }
+}
+.mountain {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+}
+.mountain::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    clip-path: polygon(0% 100%, 15% 40%, 30% 70%, 50% 10%, 70% 65%, 85% 35%, 100% 100%);
+}
+.mountain-far::before {
+    height: 200px;
+    background: linear-gradient(180deg, #1A4A6B 0%, #0D2A45 100%);
+    opacity: 0.6;
+}
+.mountain-mid::before {
+    height: 160px;
+    background: linear-gradient(180deg, #1E6B7A 0%, #0F3D4A 100%);
+    clip-path: polygon(0% 100%, 10% 55%, 25% 75%, 45% 20%, 65% 70%, 80% 40%, 100% 100%);
+}
+.mountain-near::before {
+    height: 110px;
+    background: linear-gradient(180deg, #0D2A3A 0%, #071520 100%);
+    clip-path: polygon(0% 100%, 20% 50%, 40% 80%, 60% 30%, 80% 60%, 100% 100%);
+}
 
-    <!-- Финальный CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Начните дышать правильно уже сегодня</h2>
-            <p>Присоединяйтесь к тысячам пользователей Breath Pro</p>
-            <a href="https://t.me/ProAktivator_bot" 
-               class="buy-button buy-button--light"
-               target="_blank">
-                Получить PRO за 299₽
-            </a>
-        </div>
-    </section>
+.hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding-top: 20px;
+}
+.monk-silhouette {
+    font-size: 4rem; margin-bottom: 20px;
+    filter: drop-shadow(0 0 20px rgba(244,163,64,0.5));
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.badge-sacred {
+    display: inline-block;
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    opacity: 0.85;
+}
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.9rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+}
+.gradient-text {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero-subtitle {
+    color: var(--muted); font-size: 1rem; margin-bottom: 40px;
+}
 
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Breath Pro · <a href="https://t.me/ProAktivator_bot">Поддержка</a></p>
-        </div>
-    </footer>
+/* BREATH RHYTHM */
+.breath-rhythm {
+    display: inline-flex; align-items: center; gap: 16px;
+    background: rgba(79,195,195,0.08);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 16px 32px;
+    margin-bottom: 20px;
+}
+.rhythm-item { text-align: center; }
+.rhythm-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem; font-weight: 700; line-height: 1;
+}
+.rhythm-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+.rhythm-dots { color: var(--muted); font-size: 1.2rem; opacity: 0.5; }
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* LEGEND */
+.legend { padding: 0 0 50px; position: relative; z-index: 2; }
+.legend-card {
+    background: linear-gradient(135deg, rgba(244,163,64,0.08) 0%, rgba(79,195,195,0.08) 100%);
+    border: 1px solid rgba(244,163,64,0.25);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    display: flex; gap: 16px; align-items: flex-start;
+}
+.legend-icon { font-size: 1.8rem; flex-shrink: 0; }
+.legend-text { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+.legend-text strong { color: var(--orange); }
+
+/* STEPS SECTION */
+.steps-section { padding: 60px 0; background: var(--bg2); position: relative; z-index: 2; }
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem; font-weight: 600;
+    text-align: center; margin-bottom: 8px;
+    color: var(--text);
+}
+.section-sub { text-align: center; color: var(--muted); font-size: 0.9rem; margin-bottom: 36px; }
+
+.steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+.step-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+.step-card__header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.03);
+}
+.step-tier { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+.step-badge {
+    font-size: 0.7rem; font-weight: 700;
+    padding: 3px 10px; border-radius: 100px;
+}
+.free-badge { background: rgba(52,211,153,0.15); color: #34D399; }
+.pro-badge { background: linear-gradient(135deg, rgba(79,195,195,0.2), rgba(244,163,64,0.2)); color: var(--orange); }
+.step-card__content { padding: 20px 16px 24px; text-align: center; }
+.step-icon-big { font-size: 2.5rem; margin-bottom: 10px; }
+.step-card__content h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+.step-card__content p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+/* PROGRESS TABLE */
+.progress-table {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.progress-row {
+    display: grid; grid-template-columns: 1fr 2fr 2fr;
+    padding: 12px 16px; gap: 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem; align-items: center;
+}
+.progress-row:last-child { border-bottom: none; }
+.header-row {
+    background: rgba(79,195,195,0.08);
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;
+}
+.pro-row { background: rgba(79,195,195,0.03); }
+.highlight-row { background: rgba(244,163,64,0.08); }
+.master-row { background: rgba(255,215,0,0.06); }
+.free-color { color: #34D399; }
+.pro-color { color: var(--teal); }
+.gold-color { color: var(--gold); }
+.step-num { font-weight: 600; }
+
+/* PRO SECTION */
+.pro-section { padding: 60px 0; position: relative; z-index: 2; }
+
+.features-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 36px; }
+.feature-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm, 10px);
+    transition: background 0.2s;
+}
+.feature-row:hover { background: rgba(79,195,195,0.06); }
+.feature-icon-wrap { font-size: 1.4rem; flex-shrink: 0; }
+.feature-body { flex: 1; }
+.feature-body strong { display: block; font-size: 0.92rem; font-weight: 600; margin-bottom: 2px; }
+.feature-body span { font-size: 0.8rem; color: var(--muted); }
+.feature-lock { font-size: 1.1rem; flex-shrink: 0; }
+
+/* PRICE CARD */
+.price-card {
+    position: relative;
+    background: var(--bg3);
+    border: 1px solid rgba(79,195,195,0.3);
+    border-radius: 24px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(79,195,195,0.1);
+}
+.price-glow {
+    position: absolute; top: -50%; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(79,195,195,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+.price-top { padding: 36px 32px 28px; position: relative; z-index: 1; }
+.price-emblem {
+    font-size: 2.5rem; color: var(--teal);
+    display: block; margin-bottom: 12px;
+    animation: spin-slow 10s linear infinite;
+}
+.price-label {
+    font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted); margin-bottom: 16px;
+}
+.price-amount { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: 6px; }
+.price-old { font-size: 1.4rem; opacity: 0.4; text-decoration: line-through; }
+.price-current {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--teal), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+}
+.price-desc { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+
+/* BUY BUTTON */
+.buy-button {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: calc(100% - 48px); margin: 0 auto 16px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, var(--teal-dark) 0%, #1A6B7A 50%, var(--orange-dark) 100%);
+    color: white; text-decoration: none;
+    border-radius: var(--radius); font-size: 1.05rem; font-weight: 700;
+    transition: all 0.25s; position: relative; z-index: 1;
+    box-shadow: 0 4px 24px rgba(79,195,195,0.3);
+    border: 1px solid rgba(79,195,195,0.4);
+}
+.buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 36px rgba(79,195,195,0.45);
+}
+.buy-button--outline {
+    width: auto; padding: 18px 40px; margin: 0;
+    background: transparent;
+    border: 1px solid rgba(79,195,195,0.5);
+    color: var(--teal);
+}
+.buy-button--outline:hover {
+    background: rgba(79,195,195,0.1);
+}
+.tg-icon { width: 22px; height: 22px; flex-shrink: 0; }
+.buy-hint {
+    font-size: 0.78rem; color: var(--muted);
+    padding: 0 24px 28px; line-height: 1.7;
+}
+.buy-hint code {
+    background: rgba(79,195,195,0.1);
+    color: var(--teal); padding: 2px 8px;
+    border-radius: 4px; font-size: 0.75rem;
+}
+
+/* HOW SECTION */
+.how-section { padding: 60px 0; background: var(--bg2); position: relative; z-index: 2; }
+.how-steps { display: flex; align-items: flex-start; gap: 10px; }
+.how-step {
+    flex: 1; text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 14px; position: relative;
+}
+.how-num {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    width: 24px; height: 24px;
+    background: linear-gradient(135deg, var(--teal), var(--orange));
+    border-radius: 50%; font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+.how-icon { font-size: 2rem; margin: 8px 0 10px; }
+.how-step h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+.how-step p { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+.how-arrow { font-size: 1.4rem; color: var(--muted); flex-shrink: 0; padding-top: 40px; opacity: 0.5; }
+
+/* FAQ */
+.faq-section { padding: 60px 0; position: relative; z-index: 2; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+}
+.faq-q {
+    width: 100%; padding: 18px 20px;
+    background: none; border: none; color: var(--text);
+    font-family: inherit; font-size: 0.92rem; font-weight: 500;
+    text-align: left; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    transition: background 0.2s;
+}
+.faq-q:hover { background: rgba(79,195,195,0.05); }
+.faq-arr { font-size: 0.7rem; transition: transform 0.25s; color: var(--teal); flex-shrink: 0; }
+.faq-q.active .faq-arr { transform: rotate(180deg); }
+.faq-a {
+    padding: 0 20px; max-height: 0; overflow: hidden;
+    color: var(--muted); font-size: 0.88rem; line-height: 1.7;
+    transition: all 0.3s ease;
+}
+.faq-a.open { padding: 0 20px 18px; max-height: 200px; }
+
+/* FINAL CTA */
+.final-cta {
+    padding: 80px 0; text-align: center;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    position: relative; z-index: 2;
+}
+.cta-emblem {
+    font-size: 3rem; color: var(--teal); display: block;
+    margin-bottom: 20px;
+    animation: spin-slow 10s linear infinite;
+}
+.final-cta h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem; font-weight: 700; margin-bottom: 12px;
+}
+.final-cta p { color: var(--muted); margin-bottom: 32px; }
+
+/* FOOTER */
+.footer {
+    padding: 24px 0; text-align: center;
+    color: var(--muted); font-size: 0.82rem;
+    border-top: 1px solid var(--border);
+    position: relative; z-index: 2;
+}
+.footer a { color: var(--teal); text-decoration: none; }
+
+/* RESPONSIVE */
+@media (max-width: 540px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .progress-row { grid-template-columns: 1fr 1.5fr 1.5fr; font-size: 0.75rem; }
+    .how-steps { flex-direction: column; }
+    .how-arrow { transform: rotate(90deg); align-self: center; padding-top: 0; }
+    .breath-rhythm { padding: 12px 20px; gap: 10px; }
+    .rhythm-number { font-size: 1.6rem; }
+    .buy-button { width: calc(100% - 32px); font-size: 0.92rem; }
+}
