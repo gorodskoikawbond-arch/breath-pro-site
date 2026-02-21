@@ -1,4 +1,4 @@
-// FAQ аккордеон
+// FAQ
 function toggleFaq(button) {
     const answer = button.nextElementSibling;
     const isOpen = answer.classList.contains('open');
@@ -10,7 +10,7 @@ function toggleFaq(button) {
     }
 }
 
-// Анимация появления элементов
+// Анимация появления
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -21,7 +21,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll(
-    '.belief-card, .steps-card, .feature-card, .pricing-card, .howto-step, .faq-item'
+    '.belief-card, .level-card, .pro-item, .pricing-card, .howto-step, .faq-item, .warning-card'
 ).forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
@@ -29,7 +29,7 @@ document.querySelectorAll(
     observer.observe(el);
 });
 
-// Анимация дыхательного цикла
+// Анимация дыхания
 const breathNums = document.querySelectorAll('.breath-num');
 const durations = [2000, 8000, 4000];
 let phase = 0;
@@ -38,7 +38,7 @@ function animateBreath() {
     breathNums.forEach((n, i) => {
         n.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
         n.style.transform = i === phase ? 'scale(1.25)' : 'scale(1)';
-        n.style.opacity = i === phase ? '1' : '0.5';
+        n.style.opacity = i === phase ? '1' : '0.45';
     });
     setTimeout(() => {
         phase = (phase + 1) % 3;
