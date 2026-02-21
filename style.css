@@ -50,7 +50,7 @@ body {
 
 /* HERO */
 .hero {
-    position: relative; min-height: 360px;
+    position: relative; min-height: 420px; max-height: 420px;
     display: flex; align-items: center;
     overflow: hidden;
 }
@@ -59,7 +59,7 @@ body {
     z-index: 0;
 }
 .hero-img {
-    width: 100%; height: 100%;
+    width: 100%; height: 420px;
     object-fit: cover; object-position: center;
 }
 .hero-overlay {
@@ -73,7 +73,7 @@ body {
     position: relative; z-index: 2;
     display: grid; grid-template-columns: 1fr auto;
     align-items: center; gap: 40px;
-    padding: 70px 0 60px;
+    padding: 100px 0 80px;
 }
 .hero-tag {
     display: inline-block;
@@ -176,11 +176,11 @@ body {
 
 /* STEPS */
 .steps {
-    position: relative; padding: 80px 0;
+    position: relative; padding: 60px 0;
     overflow: hidden;
 }
 .steps-bg { position: absolute; inset: 0; z-index: 0; }
-.steps-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.steps-img { width: 100%; height: 100%; max-height: 600px; object-fit: cover; object-position: center top; }
 .steps-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(180deg,
@@ -350,9 +350,9 @@ body {
 .faq-a.open { padding: 0 24px 20px; max-height: 200px; }
 
 /* FINAL */
-.final { position: relative; padding: 100px 0; overflow: hidden; }
+.final { position: relative; padding: 60px 0; max-height: 380px; overflow: hidden; }
 .final-bg { position: absolute; inset: 0; z-index: 0; }
-.final-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.final-img { width: 100%; height: 380px; object-fit: cover; object-position: center; }
 .final-overlay {
     position: absolute; inset: 0;
     background: rgba(10,5,0,0.78);
