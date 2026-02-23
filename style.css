@@ -767,3 +767,20 @@ body {
         width: calc((100vw - 80px) / 1.6) !important;
     }
 }
+
+/* ===== СЛАЙДЕР ФИНАЛ v4 — размеры -20%, белый фон ===== */
+.screenshots {
+    background: #ffffff !important;
+}
+.screen-item {
+    width: calc((100vw - 260px) / 6.4) !important;
+}
+.screen-item img {
+    box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    .screen-item {
+        width: calc((100vw - 80px) / 1.9) !important;
+    }
+}
