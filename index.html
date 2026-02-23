@@ -217,34 +217,36 @@
             <h2 class="section-title">Простой и красивый интерфейс</h2>
             <p class="section-sub">Всё интуитивно понятно с первого запуска — никаких лишних кнопок, только практика</p>
             <div class="slider-wrapper">
-                <button class="slider-arrow slider-prev" onclick="slideScreens(-1)">&#8592;</button>
-                <div class="screens-grid" id="screensGrid">
-                    <div class="screen-item">
-                        <img src="screen1.png" alt="Выбор техники">
-                        <p>Выбор техники дыхания</p>
-                    </div>
-                    <div class="screen-item">
-                        <img src="screen2.png" alt="Практика">
-                        <p>Визуальный гид дыхания</p>
-                    </div>
-                    <div class="screen-item">
-                        <img src="screen3.png" alt="Настройки">
-                        <p>Гибкие настройки</p>
-                    </div>
-                    <div class="screen-item">
-                        <img src="screen4.png" alt="Вдох">
-                        <p>Анимация вдоха</p>
-                    </div>
-                    <div class="screen-item">
-                        <img src="screen5.png" alt="Задержка">
-                        <p>Задержка дыхания</p>
-                    </div>
-                    <div class="screen-item">
-                        <img src="screen6.png" alt="Выдох">
-                        <p>Плавный выдох</p>
+                <button class="slider-arrow" id="prevBtn" onclick="slideScreens(-1)">&#8592;</button>
+                <div class="screens-viewport">
+                    <div class="screens-grid" id="screensGrid">
+                        <div class="screen-item">
+                            <img src="screen1.png" alt="Выбор техники">
+                            <p>Выбор техники</p>
+                        </div>
+                        <div class="screen-item">
+                            <img src="screen2.png" alt="Вдох">
+                            <p>Практика — Вдох</p>
+                        </div>
+                        <div class="screen-item">
+                            <img src="screen3.png" alt="Выдох">
+                            <p>Практика — Выдох</p>
+                        </div>
+                        <div class="screen-item">
+                            <img src="screen4.png" alt="Задержка">
+                            <p>Задержка дыхания</p>
+                        </div>
+                        <div class="screen-item">
+                            <img src="screen5.png" alt="Ступени">
+                            <p>Список ступеней</p>
+                        </div>
+                        <div class="screen-item">
+                            <img src="screen6.png" alt="Настройки">
+                            <p>Настройки</p>
+                        </div>
                     </div>
                 </div>
-                <button class="slider-arrow slider-next" onclick="slideScreens(1)">&#8594;</button>
+                <button class="slider-arrow" id="nextBtn" onclick="slideScreens(1)">&#8594;</button>
             </div>
         </div>
     </section>
