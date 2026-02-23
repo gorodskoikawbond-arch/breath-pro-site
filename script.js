@@ -50,6 +50,28 @@ animateBreath();
 // СЛАЙДЕР СКРИНШОТОВ
 var sliderCurrent = 0;
 var sliderMax = 3;
+var GAP = 20;
+
+function initSlider() {
+    var viewport = document.querySelector('.screens-viewport');
+    var grid = document.getElementById('screensGrid');
+    var items = grid.querySelectorAll('.screen-item');
+    if (!viewport || !grid || items.length === 0) return;
+
+    // Ширина одного item = (ширина viewport - 2 gap) / 3.3
+    var viewW = viewport.offsetWidth;
+    var itemW = (viewW - GAP * 2) / 3.3;
+
+    items.forEach(function(item) {
+        item.style.flex = '0 0 ' + itemW + 'px';
+        item.style.width = itemW + 'px';
+    });
+
+    grid.style.gap = GAP + 'px';
+
+    document.getElementById('prevBtn').disabled = true;
+    document.getElementById('nextBtn').disabled = false;
+}
 
 function slideScreens(dir) {
     sliderCurrent += dir;
@@ -57,8 +79,8 @@ function slideScreens(dir) {
     if (sliderCurrent > sliderMax) sliderCurrent = sliderMax;
 
     var grid = document.getElementById('screensGrid');
-    var items = grid.querySelectorAll('.screen-item');
-    var itemW = items[0].offsetWidth + 20;
+    var item = grid.querySelectorAll('.screen-item')[0];
+    var itemW = item.offsetWidth + GAP;
 
     grid.style.transform = 'translateX(-' + (sliderCurrent * itemW) + 'px)';
 
@@ -66,10 +88,5 @@ function slideScreens(dir) {
     document.getElementById('nextBtn').disabled = (sliderCurrent === sliderMax);
 }
 
-// Инициализация после загрузки
-window.addEventListener('load', function() {
-    var prevBtn = document.getElementById('prevBtn');
-    var nextBtn = document.getElementById('nextBtn');
-    if (prevBtn) prevBtn.disabled = true;
-    if (nextBtn) nextBtn.disabled = false;
-});
+window.addEventListener('load', initSlider);
+window.addEventListener('resize', initSlider);
