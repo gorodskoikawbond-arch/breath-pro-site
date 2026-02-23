@@ -80,9 +80,13 @@ body {
 .hero-inner {
     position: relative; z-index: 2;
     display: grid; grid-template-columns: 1fr auto;
-    align-items: center; gap: 40px;
+    align-items: start; gap: 40px;
     padding: 80px 0 70px;
     width: 100%;
+}
+
+.hero-card {
+    margin-top: 20px;
 }
 .hero-tag {
     display: inline-block;
