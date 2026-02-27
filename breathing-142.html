@@ -195,26 +195,32 @@
 
         /* ===== ШАГИ ===== */
         .steps-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 14px;
             margin: 24px 0;
         }
         .step-row {
             display: flex;
-            gap: 16px;
-            align-items: flex-start;
+            flex-direction: column;
+            gap: 12px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.07);
-            border-radius: 12px;
-            padding: 16px 20px;
-            transition: border-color 0.2s;
+            border-radius: 16px;
+            padding: 20px;
+            transition: border-color 0.2s, transform 0.2s;
         }
-        .step-row:hover { border-color: rgba(255,140,0,0.2); }
+        .step-row:hover {
+            border-color: rgba(255,140,0,0.2);
+            transform: translateY(-2px);
+        }
+        .step-row:last-child {
+            grid-column: 1 / -1;
+        }
         .step-num {
-            width: 36px;
-            height: 36px;
-            min-width: 36px;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
             background: rgba(255,140,0,0.12);
             border: 1px solid rgba(255,140,0,0.3);
             border-radius: 50%;
@@ -223,15 +229,23 @@
             justify-content: center;
             font-weight: 700;
             color: #ff8c00;
-            font-size: 15px;
+            font-size: 16px;
         }
         .step-text {
             font-size: 15px;
             color: rgba(255,255,255,0.72);
             line-height: 1.6;
-            padding-top: 6px;
         }
-        .step-text strong { color: #ffffff; }
+        .step-text strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        @media (max-width: 600px) {
+            .steps-list { grid-template-columns: 1fr; }
+            .step-row:last-child { grid-column: auto; }
+        }
 
         /* ===== ПОЛЬЗА ===== */
         .benefits-grid {
@@ -377,7 +391,7 @@
     <!-- ГЕРОЙ С ФОТО -->
     <section class="art-hero">
         <div class="art-hero-bg">
-            <img src="1R.jpg" alt="Тибетские горы — дыхание 1-4-2" class="art-hero-img">
+            <img src="hero-142.jpg" alt="Тибетские горы — дыхание 1-4-2" class="art-hero-img">
             <div class="art-hero-overlay"></div>
             <div class="art-hero-fade"></div>
         </div>
