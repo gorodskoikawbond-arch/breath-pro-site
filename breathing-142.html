@@ -345,9 +345,91 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        /* ===== ОШИБКИ ===== */
+        .mistakes-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+        .mistake-item {
+            display: flex;
+            gap: 14px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-left: 2px solid rgba(255,60,60,0.4);
+            border-radius: 0 12px 12px 0;
+            padding: 18px 18px 18px 20px;
+            transition: border-color 0.2s;
+        }
+        .mistake-item:hover { border-left-color: rgba(255,60,60,0.8); }
+        .mistake-x {
+            color: rgba(255,60,60,0.7);
+            font-size: 16px;
+            font-weight: 700;
+            min-width: 20px;
+            margin-top: 1px;
+        }
+        .mistake-body strong {
+            display: block;
+            color: #ffffff;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+        .mistake-body p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ===== СТУПЕНИ ===== */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 24px 0;
+        }
+        .level-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .level-item:hover {
+            border-color: rgba(255,140,0,0.3);
+            transform: translateY(-2px);
+        }
+        .level-last {
+            border-color: rgba(255,140,0,0.25);
+            background: rgba(255,140,0,0.05);
+        }
+        .level-num {
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .level-formula {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ff8c00;
+            margin-bottom: 6px;
+        }
+        .level-last .level-formula { color: #ffd700; }
+        .level-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+        }
+
         @media (max-width: 600px) {
             .steps-list { grid-template-columns: 1fr; }
             .step-row:last-child { grid-column: auto; }
+            .mistakes-list { grid-template-columns: 1fr; }
+            .levels-grid { grid-template-columns: repeat(2, 1fr); }
             .formula-row { padding: 14px 18px; gap: 8px; }
             .f-num { font-size: 34px; }
             .photo-section-content { padding: 24px; }
@@ -555,6 +637,119 @@
                 </div>
             </div>
 
+
+            <h2>Частые ошибки новичков</h2>
+            <p>Большинство людей получают меньше эффекта от практики из-за нескольких типичных ошибок. Зная их заранее, вы сразу начнёте правильно.</p>
+            <div class="mistakes-list">
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Дышат ртом</strong>
+                        <p>Вдох и выдох должны быть только через нос. Дыхание через рот снижает эффект и нарушает ритм.</p>
+                    </div>
+                </div>
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Напрягают шею и плечи</strong>
+                        <p>Задержка дыхания — это спокойное удержание, а не усилие. Если напрягаетесь — уменьшите пропорцию.</p>
+                    </div>
+                </div>
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Начинают с высоких ступеней</strong>
+                        <p>Задержка 30+ секунд для неподготовленного человека — стресс, а не польза. Начинайте с 4·16·8.</p>
+                    </div>
+                </div>
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Практикуют нерегулярно</strong>
+                        <p>Одна сессия в неделю не даст эффекта. Устойчивый результат — от ежедневной практики 10–15 минут.</p>
+                    </div>
+                </div>
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Считают секунды в голове</strong>
+                        <p>Счёт отвлекает и сбивает ритм. Используйте метроном или приложение — тогда можно полностью расслабиться.</p>
+                    </div>
+                </div>
+                <div class="mistake-item">
+                    <div class="mistake-x">✕</div>
+                    <div class="mistake-body">
+                        <strong>Ждут мгновенного результата</strong>
+                        <p>Первые заметные изменения появляются через 1–2 недели. Глубокий эффект — через 4–6 недель регулярной практики.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>12 ступеней мастерства</h2>
+            <p>Система построена так, чтобы тело адаптировалось постепенно. Каждая ступень — это новый уровень задержки дыхания и глубины практики. Тибетские монахи считали: <strong>достигший 12-й ступени останавливает старение.</strong></p>
+            <div class="levels-grid">
+                <div class="level-item">
+                    <div class="level-num">1</div>
+                    <div class="level-formula">2 · 8 · 4</div>
+                    <div class="level-label">Начало пути</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">2</div>
+                    <div class="level-formula">3 · 12 · 6</div>
+                    <div class="level-label">Новичок</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">3</div>
+                    <div class="level-formula">4 · 16 · 8</div>
+                    <div class="level-label">Основа</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">4</div>
+                    <div class="level-formula">5 · 20 · 10</div>
+                    <div class="level-label">Уверенность</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">5</div>
+                    <div class="level-formula">6 · 24 · 12</div>
+                    <div class="level-label">Практик</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">6</div>
+                    <div class="level-formula">7 · 28 · 14</div>
+                    <div class="level-label">Углубление</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">7</div>
+                    <div class="level-formula">8 · 32 · 16</div>
+                    <div class="level-label">Мастерство</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">8</div>
+                    <div class="level-formula">9 · 36 · 18</div>
+                    <div class="level-label">Глубина</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">9</div>
+                    <div class="level-formula">10 · 40 · 20</div>
+                    <div class="level-label">Сила</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">10</div>
+                    <div class="level-formula">11 · 44 · 22</div>
+                    <div class="level-label">Просветление</div>
+                </div>
+                <div class="level-item">
+                    <div class="level-num">11</div>
+                    <div class="level-formula">12 · 48 · 24</div>
+                    <div class="level-label">Высший уровень</div>
+                </div>
+                <div class="level-item level-last">
+                    <div class="level-num">12</div>
+                    <div class="level-formula">13 · 52 · 26</div>
+                    <div class="level-label">Бессмертие</div>
+                </div>
+            </div>
+            <p>В приложении каждая ступень открывается последовательно — первые 6 бесплатно, все 12 доступны в PRO-версии.</p>
             <h2>Противопоказания</h2>
             <p>Дыхание 1-4-2 безопасно для большинства людей. Проявите осторожность в следующих случаях:</p>
             <div class="contra-list">
